@@ -47,13 +47,8 @@ git push でGitHubに送る
 GitHub
   ネット上のリポジトリ
 
-cd ~/pybamm_study
-
-nano README.md
-
 git status
-git diff README.md
-
-git add README.md
-git commit -m "READMEの実行コマンドをrunsに更新"
+git diff
+git add 変更したファイル
+git commit -m "何を変えたか"
 git push
