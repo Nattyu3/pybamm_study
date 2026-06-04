@@ -1,0 +1,15 @@
+[project]
+name = "pybamm-study"
+version = "0.1.0"
+description = "PyBaMM practice scripts"
+requires-python = ">=3.11"
+dependencies = [
+    "pybamm",
+    "matplotlib",
+]
+
+[tool.uv]
+package = true
+
+[tool.setuptools.packages.find]
+where = ["src"]

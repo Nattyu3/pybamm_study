@@ -1,0 +1,38 @@
+# Python bytecode/cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python packaging/build outputs
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# uv / Python tooling
+.python-version
+
+# Test/cache/tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# PyBaMM / project outputs
+results/

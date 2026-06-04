@@ -1,0 +1,22 @@
+cd ~/pybamm-study
+uv init .
+uv python install 3.12
+uv python pin 3.12
+uv add "pybamm[plot]"
+uv run python -c "import pybamm; print(pybamm.__version__)"
+
+uv run python scripts/plot_voltage.py
+uv add xx
+uv run python *.py
+uv sync
+uv python install 3.12
+uv python pin 3.12
+uv run python -c "import sys; print(sys.executable)"
+
+paths.py       : project_root, make_output_dir
+io.py          : CSV保存、info.txt保存
+plotting.py    : matplotlibでpng保存
+solution.py    : PyBaMM solution から変数を取り出す処理
+capacity.py    : 容量換算、放電/充電の分割
+experiments.py : よく使う Experiment 定義
+scripts/*.py   : 実験ごとのメイン処理
