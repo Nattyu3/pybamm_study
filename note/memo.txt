@@ -19,4 +19,30 @@ plotting.py    : matplotlibでpng保存
 solution.py    : PyBaMM solution から変数を取り出す処理
 capacity.py    : 容量換算、放電/充電の分割
 experiments.py : よく使う Experiment 定義
-scripts/*.py   : 実験ごとのメイン処理
+runs/*.py   : 実験ごとのメイン処理
+
+Git     = 自分のPC上で変更履歴を管理する道具
+GitHub  = Gitの履歴をネット上に置いて共有・バックアップする場所
+commit  = ローカルの変更を「ここまでの作業」として記録すること
+push    = ローカルのcommitをGitHubへアップロードすること
+編集する
+↓
+git status で変更確認
+↓
+git add で「次のcommitに入れる変更」を選ぶ
+↓
+git commit でローカルに記録
+↓
+git push でGitHubに送る
+
+作業フォルダ
+  README.md を編集
+      ↓ git add
+ステージングエリア
+  次のcommitに入れる変更リスト
+      ↓ git commit
+ローカルリポジトリ
+  自分のPC内のGit履歴
+      ↓ git push
+GitHub
+  ネット上のリポジトリ
