@@ -1,3 +1,5 @@
+# Compare models
+
 import pybamm
 
 models = [

@@ -1,3 +1,5 @@
+# How to run a model
+
 import pybamm
 
 model = pybamm.lithium_ion.DFN()
