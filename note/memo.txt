@@ -2,7 +2,7 @@ cd ~/pybamm-study
 uv init .
 uv python install 3.12
 uv python pin 3.12
-uv add "pybamm[plot]"
+uv add "pybamm[plot,cite]"
 uv run python -c "import pybamm; print(pybamm.__version__)"
 
 uv run python scripts/plot_voltage.py

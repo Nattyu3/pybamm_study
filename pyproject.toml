@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "PyBaMM practice scripts"
 requires-python = ">=3.11"
 dependencies = [
-    "pybamm",
+    "pybamm[cite]",
     "matplotlib",
 ]
 
