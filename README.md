@@ -1,6 +1,7 @@
 # pybamm-study
 
 PyBaMM の練習用リポジトリ。
+https://github.com/pybamm-team/PyBaMM
 
 ## 実行方法
 
