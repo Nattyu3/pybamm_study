@@ -5,13 +5,8 @@ from pybamm_study.capacity import (
     split_discharge_charge,
     to_specific_capacity_mAh_g,
 )
-from pybamm_study.outputs import (
-    save_capacity_voltage_csv,
-    save_info,
-    save_raw_solution_csv,
-)
+from pybamm_study.outputs import save_capacity_voltage_result
 from pybamm_study.paths import make_output_dir
-from pybamm_study.plotting import plot_capacity_voltage
 from pybamm_study.solution import extract_basic_solution
 
 
@@ -66,45 +61,20 @@ def main():
         branches["discharge_capacity_ah"],
         active_material_mass_g,
     )
+
     charge_specific_capacity = to_specific_capacity_mAh_g(
         branches["charge_capacity_ah"],
         active_material_mass_g,
     )
 
-    raw_csv_path = out_dir / "li_raw_solution.csv"
-    plot_csv_path = out_dir / "li_capacity_voltage.csv"
-    png_path = out_dir / "li_capacity_voltage.png"
-    info_path = out_dir / "li_info.txt"
-
-    save_raw_solution_csv(
-        raw_csv_path,
-        time_s=data["time_s"],
-        voltage_v=data["voltage_v"],
-        current_a=data["current_a"],
-        capacity_ah=data["capacity_ah"],
-    )
-
-    save_capacity_voltage_csv(
-        plot_csv_path,
+    saved_paths = save_capacity_voltage_result(
+        out_dir=out_dir,
+        prefix="li",
+        data=data,
+        branches=branches,
         discharge_specific_capacity=discharge_specific_capacity,
-        discharge_voltage_v=branches["discharge_voltage_v"],
         charge_specific_capacity=charge_specific_capacity,
-        charge_voltage_v=branches["charge_voltage_v"],
-    )
-
-    plot_capacity_voltage(
-        png_path,
-        discharge_specific_capacity=discharge_specific_capacity,
-        discharge_voltage_v=branches["discharge_voltage_v"],
-        charge_specific_capacity=charge_specific_capacity,
-        charge_voltage_v=branches["charge_voltage_v"],
-        title="Li-ion charge/discharge simulation",
-        ylim=(2.0, 4.4),
-    )
-
-    save_info(
-        info_path,
-        [
+        info_lines=[
             "Li-ion PyBaMM capacity-voltage simulation",
             "model = lithium_ion.SPM",
             "parameter_values = Chen2020",
@@ -120,16 +90,13 @@ def main():
             f"voltage variable = {variable_names['voltage']}",
             f"capacity variable = {variable_names['capacity']}",
             f"current variable = {variable_names['current']}",
-            f"plot csv = {plot_csv_path.name}",
-            f"raw csv = {raw_csv_path.name}",
-            f"png = {png_path.name}",
         ],
+        plot_title="Li-ion charge/discharge simulation",
+        ylim=(2.0, 4.4),
     )
 
-    print(f"saved: {plot_csv_path}")
-    print(f"saved: {raw_csv_path}")
-    print(f"saved: {png_path}")
-    print(f"saved: {info_path}")
+    for path in saved_paths.values():
+        print(f"saved: {path}")
 
 
 if __name__ == "__main__":
